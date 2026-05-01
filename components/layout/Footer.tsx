@@ -7,8 +7,8 @@ import { MAILTO, SITE } from "@/lib/site";
 export function Footer() {
   return (
     <footer className="bg-navy text-white">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10 py-16 grid grid-cols-12 gap-8">
-        <div className="col-span-12 md:col-span-5">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-10 py-16 grid grid-cols-2 md:grid-cols-12 gap-8">
+        <div className="col-span-2 md:col-span-5">
           <Logo variant="compact" scale={0.95} reversed />
           <div
             className="mt-5 text-white/70"
@@ -24,7 +24,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="col-span-6 md:col-span-3">
+        <div className="col-span-1 md:col-span-3">
           <Eyebrow tone="soft">Site</Eyebrow>
           <ul className="mt-5" style={{ fontSize: 15 }}>
             <li>
@@ -50,7 +50,7 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="col-span-6 md:col-span-4">
+        <div className="col-span-1 md:col-span-4">
           <Eyebrow tone="soft">Get in touch</Eyebrow>
           <ul className="mt-5" style={{ fontSize: 15 }}>
             <li>

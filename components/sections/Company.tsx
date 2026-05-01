@@ -5,8 +5,8 @@ export function Company() {
   return (
     <section id="company" className="bg-white border-t border-border">
       <div className="max-w-[1280px] mx-auto px-6 md:px-10 py-28">
-        <div className="grid grid-cols-12 gap-12">
-          <div className="col-span-12 md:col-span-5">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+          <div className="md:col-span-5">
             <Eyebrow>{COMPANY.eyebrow}</Eyebrow>
             <h2
               className="mt-5 text-navy font-bold"
@@ -32,7 +32,7 @@ export function Company() {
             </div>
           </div>
 
-          <div className="col-span-12 md:col-span-7">
+          <div className="md:col-span-7">
             <div
               className="border border-border space-y-px"
               style={{ background: "var(--color-border)" }}
@@ -40,7 +40,7 @@ export function Company() {
               {COMPANY.founders.map((f) => (
                 <div
                   key={f.name}
-                  className="flex items-start gap-6 p-6 bg-white"
+                  className="flex items-start gap-4 md:gap-6 p-5 md:p-6 bg-white"
                 >
                   <div
                     className="bg-navy text-white flex items-center justify-center font-semibold shrink-0"

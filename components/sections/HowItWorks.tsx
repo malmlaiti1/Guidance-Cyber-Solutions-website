@@ -19,7 +19,7 @@ export function HowItWorks() {
           {HOW.title}
         </h2>
 
-        <div className="mt-14 bg-off border border-border p-10">
+        <div className="mt-14 bg-off border border-border p-5 md:p-10">
           <ol className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-2 relative">
             {HOW.steps.map((s, i) => (
               <li key={s.n} className="relative md:px-3">

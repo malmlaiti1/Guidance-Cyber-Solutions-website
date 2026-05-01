@@ -44,8 +44,7 @@ export function Faq() {
                     onClick={() => setOpenIdx(isOpen ? -1 : i)}
                     aria-expanded={isOpen}
                     aria-controls={panelId}
-                    className="w-full text-left flex items-center justify-between gap-6"
-                    style={{ padding: "24px 28px" }}
+                    className="w-full text-left flex items-center justify-between gap-4 md:gap-6 px-5 py-5 md:px-7 md:py-6"
                   >
                     <span
                       className="text-navy font-semibold"
@@ -66,7 +65,8 @@ export function Faq() {
                 <div
                   id={panelId}
                   hidden={!isOpen}
-                  style={{ padding: "0 28px 28px 28px", maxWidth: 880 }}
+                  className="px-5 pb-5 md:px-7 md:pb-7"
+                  style={{ maxWidth: 880 }}
                 >
                   <p className="text-body" style={{ fontSize: 16, lineHeight: 1.65 }}>
                     {it.a}

@@ -19,8 +19,8 @@ export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-white">
       <GridBackdrop />
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10 relative grid grid-cols-12 gap-10 pt-20 pb-24">
-        <div className="col-span-12 lg:col-span-7">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-10 relative grid grid-cols-1 lg:grid-cols-12 gap-10 pt-20 pb-24">
+        <div className="lg:col-span-7">
           <Eyebrow>{HERO.eyebrow}</Eyebrow>
           <h1
             className="mt-6 text-navy font-bold"
@@ -52,7 +52,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="col-span-12 lg:col-span-5">
+        <div className="lg:col-span-5">
           <HeroPanel />
         </div>
       </div>
