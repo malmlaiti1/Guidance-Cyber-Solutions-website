@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Guidance Cyber Solutions — marketing site
 
-## Getting Started
+Production website for [guidancecyber.com](https://guidancecyber.com). AI-powered HIPAA compliance for multi-location dental and specialty practices.
 
-First, run the development server:
+Built with **Next.js 16** (App Router), **React 19**, **TypeScript** (strict), **Tailwind CSS v4**, and `next/font` Inter. Zero-config Vercel deploy.
+
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev          # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build & verify
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm build        # production build
+pnpm start        # serve the production build
+pnpm lint         # ESLint
+pnpm typecheck    # tsc --noEmit
+pnpm format       # prettier --write
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploy
 
-## Learn More
+Push to GitHub and import the repo into [Vercel](https://vercel.com/new). No additional config needed.
 
-To learn more about Next.js, take a look at the following resources:
+Set the production environment variable in Vercel:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+NEXT_PUBLIC_SITE_URL=https://guidancecyber.com
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`sitemap.xml`, `robots.txt`, and the OpenGraph image (`/opengraph-image`) all derive their absolute URLs from `NEXT_PUBLIC_SITE_URL` (with a sensible fallback in `lib/site.ts`).
 
-## Deploy on Vercel
+## Project structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+app/                     # App Router pages, metadata, sitemap, robots, OG image, 404
+  layout.tsx             # Inter font, Nav + Footer chrome, default <metadata>
+  page.tsx               # Home — composes the section components
+  pricing/page.tsx       # Pricing (tiers + FAQ accordion)
+  security/page.tsx      # Security & Trust (5 numbered sections)
+  not-found.tsx          # On-brand 404
+  icon.svg               # Favicon — the navy + accent G mark
+  opengraph-image.tsx    # Generated OG image (1200×630, navy + wordmark)
+  sitemap.ts / robots.ts
+  globals.css            # Tailwind v4 @theme tokens + base styles
+components/
+  layout/Nav.tsx         # Sticky 72px nav with mobile disclosure
+  layout/Footer.tsx
+  layout/Section.tsx     # Consistent max-w + padding wrapper
+  sections/              # One file per home / pricing / security section
+  ui/                    # Logo, Icon, Button, Card, Eyebrow, GridBackdrop, PageHead
+lib/
+  site.ts                # SITE constants, mailto: links
+  copy.ts                # All marketing copy (single source of truth)
+public/                  # Empty by design — favicon comes from app/icon.svg
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Where to update common things
+
+| What | Where |
+|---|---|
+| Marketing copy (every page) | [lib/copy.ts](lib/copy.ts) |
+| Email addresses, mailto subjects | [lib/site.ts](lib/site.ts) |
+| Brand colors, type, shadows | `@theme` block in [app/globals.css](app/globals.css) |
+| Logo SVG path data | [components/ui/Logo.tsx](components/ui/Logo.tsx) |
+| Icon SVG path data | [components/ui/Icon.tsx](components/ui/Icon.tsx) |
+| Favicon | [app/icon.svg](app/icon.svg) |
+| OG image | [app/opengraph-image.tsx](app/opengraph-image.tsx) |
+| Founders, subprocessors, compliance status | [lib/copy.ts](lib/copy.ts) |
+
+The colors are exposed as Tailwind utility classes (`text-navy`, `bg-accent`, `border-border`, etc.) and as CSS custom properties (`var(--color-navy)`). To change a brand color globally, edit the single token in [app/globals.css](app/globals.css).
+
+## Form handlers
+
+Every CTA currently opens a `mailto:` link. Search the repo for `TODO(launch)` to find the spots that should swap to a real form endpoint before launch.
+
+## Browser support
+
+Latest two versions of Chrome, Safari, Firefox, Edge. The site has no IE/legacy fallbacks by design — Tailwind v4 and `next/font` already exclude those targets.
+
+## Lighthouse
+
+Desktop scores at `pnpm start`:
+
+|  | Performance | Accessibility | Best Practices | SEO |
+|---|---|---|---|---|
+| `/` | 100 | 100 | 100 | 100 |
+| `/pricing` | 100 | 100 | 100 | 100 |
+| `/security` | 100 | 100 | 100 | 100 |
+| `/` (mobile) | 98 | 100 | 100 | 100 |
+
+## License
+
+Proprietary. © Guidance Cyber Solutions.

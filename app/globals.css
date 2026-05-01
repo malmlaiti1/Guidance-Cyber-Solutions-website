@@ -1,26 +1,87 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Brand palette — Brand Book §04. Do not invent new values. */
+  --color-navy: #0a1f44;
+  --color-accent: #2c6bed;
+  --color-accent-hover: #1f58d6;
+  /* Darker accent reserved for small text on off-white surfaces where the
+     primary accent does not clear WCAG AA. Same hue family as the button
+     hover, so it reads as the same brand color. */
+  --color-accent-strong: #1f58d6;
+  --color-off: #f7f9fc;
+  --color-body: #1a2540;
+  --color-border: #e2e8f0;
+  --color-soft: #7ba7ff;
+  --color-muted: #5a6478;
+
+  /* Functional — product UI / inline status only.
+     Each pairs with its tinted bg (defined below) and meets WCAG AA at 11px+. */
+  --color-success: #15803d;
+  --color-warning: #b45309;
+  --color-critical: #b91c1c;
+  --color-info: #1d4ed8;
+
+  /* Status backgrounds */
+  --color-success-bg: #f0f9f4;
+  --color-warning-bg: #fef3e7;
+  --color-critical-bg: #fef2f2;
+  --color-info-bg: #eff6ff;
+
+  --font-sans:
+    var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+
+  --shadow-card: 0 4px 12px rgba(10, 31, 68, 0.06);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    color: var(--color-body);
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-sans);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: #ffffff;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Section anchors clear the 72px sticky nav */
+  section[id] {
+    scroll-margin-top: 80px;
+  }
+
+  /* Visible focus states using brand accent */
+  :focus {
+    outline: none;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility tabular-nums {
+  font-variant-numeric: tabular-nums;
 }
