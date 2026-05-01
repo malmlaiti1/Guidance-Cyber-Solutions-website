@@ -5,12 +5,12 @@ export const SITE = {
   description:
     "Continuous, AI-powered HIPAA compliance for multi-location dental and specialty practices. Replace the annual risk assessment consultant.",
   city: "Dallas, Texas",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://guidancecyber.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://guidancecybersolutions.com",
   email: {
-    hello: "hello@guidancecyber.com",
-    partners: "partners@guidancecyber.com",
-    investors: "investors@guidancecyber.com",
-    security: "security@guidancecyber.com",
+    hello: "hello@guidancecybersolutions.com",
+    partners: "partners@guidancecybersolutions.com",
+    investors: "investors@guidancecybersolutions.com",
+    security: "security@guidancecybersolutions.com",
   },
 } as const;
 

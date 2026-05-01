@@ -99,7 +99,7 @@ export default function OpengraphImage() {
             fontSize: 18,
           }}
         >
-          <span>guidancecyber.com</span>
+          <span>{SITE.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</span>
           <span>HIPAA-aligned · BAA available</span>
         </div>
       </div>

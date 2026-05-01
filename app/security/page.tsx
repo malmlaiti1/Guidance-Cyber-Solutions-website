@@ -106,7 +106,7 @@ export default function SecurityPage() {
             href={MAILTO.security}
             className="text-accent font-semibold hover:underline"
           >
-            security@guidancecyber.com
+            security@guidancecybersolutions.com
           </a>
           . We acknowledge every report within 48 hours, work with the reporter on a remediation
           timeline, and credit researchers who follow coordinated disclosure.

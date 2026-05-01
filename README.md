@@ -1,6 +1,6 @@
 # Guidance Cyber Solutions — marketing site
 
-Production website for [guidancecyber.com](https://guidancecyber.com). AI-powered HIPAA compliance for multi-location dental and specialty practices.
+Production website for [guidancecybersolutions.com](https://guidancecybersolutions.com). AI-powered HIPAA compliance for multi-location dental and specialty practices.
 
 Built with **Next.js 16** (App Router), **React 19**, **TypeScript** (strict), **Tailwind CSS v4**, and `next/font` Inter. Zero-config Vercel deploy.
 
@@ -28,7 +28,7 @@ Push to GitHub and import the repo into [Vercel](https://vercel.com/new). No add
 Set the production environment variable in Vercel:
 
 ```
-NEXT_PUBLIC_SITE_URL=https://guidancecyber.com
+NEXT_PUBLIC_SITE_URL=https://guidancecybersolutions.com
 ```
 
 `sitemap.xml`, `robots.txt`, and the OpenGraph image (`/opengraph-image`) all derive their absolute URLs from `NEXT_PUBLIC_SITE_URL` (with a sensible fallback in `lib/site.ts`).
